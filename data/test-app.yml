@@ -1,5 +1,5 @@
 ---
-# yml file to test
+# This is the playbook to deploy app.
 - name: test-app.yml
   hosts: edge-devices
   tasks:
