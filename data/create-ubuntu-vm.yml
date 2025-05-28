@@ -1,0 +1,8 @@
+---
+# 
+- name: create-ubuntu-vm.yml
+  hosts: edge-devices
+  tasks:
+    - name: Add your tasks here
+      debug:
+        msg: "Hello World"
