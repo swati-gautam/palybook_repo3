@@ -1,0 +1,8 @@
+---
+# deploy_mongodb_container
+- name: deploy_mongodb_container.yml
+  hosts: edge-devices
+  tasks:
+    - name: Add your tasks here
+      debug:
+        msg: "Hello World"
