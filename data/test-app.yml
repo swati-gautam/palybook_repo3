@@ -1,0 +1,8 @@
+---
+# This is test yml.
+- name: test-app.yml
+  hosts: edge-devices-1
+  tasks:
+    - name: Add your tasks here
+      debug:
+        msg: "Hello World"
