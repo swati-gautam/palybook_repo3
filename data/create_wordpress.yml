@@ -1,0 +1,8 @@
+---
+# create wordpress
+- name: create_wordpress.yml
+  hosts: edge-devices
+  tasks:
+    - name: Add your tasks here
+      debug:
+        msg: "Hello World"
