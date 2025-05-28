@@ -1,0 +1,8 @@
+---
+# This is the playbook for demo.
+- name: demo.yml
+  hosts: edge-devices
+  tasks:
+    - name: Add your tasks here
+      debug:
+        msg: "Hello World"
