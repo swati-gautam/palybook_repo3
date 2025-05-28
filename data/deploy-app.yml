@@ -1,8 +1,8 @@
 ---
-# This is to deloy app.
+# Test me.
 - name: deploy-app.yml
   hosts: edge-devices
   tasks:
-    - name: Add your tasks now
+    - name: Add your tasks here
       debug:
         msg: "Hello World"
