@@ -1,8 +1,8 @@
 ---
-# This is to deloy app.
+# This is the playbook from deploying.
 - name: deploy-app.yml
   hosts: edge-devices
   tasks:
-    - name: Add your tasks here
+    - name: Task 1
       debug:
         msg: "Hello World"
