@@ -1,11 +1,8 @@
 ---
-- name: Deploy Virtual Machine
+# This is the playbook from deploying.
+- name: deploy-app.yml
   hosts: edge-devices
   tasks:
-    - name: Create VM
-      vm_instance:
-        name: new-vm
-        image: ubuntu-20.04
-        memory: 2048
-        vcpus: 2
-        state: present
+    - name: Task 1
+      debug:
+        msg: "Hello World"
