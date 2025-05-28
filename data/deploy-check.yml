@@ -1,0 +1,8 @@
+---
+# test
+- name: deploy-check.ymlrr
+  hosts: edge-devices
+  tasks:
+    - name: Add your tasks here
+      debug:
+        msg: "Hello World"
