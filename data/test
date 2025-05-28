@@ -1,8 +1,11 @@
 ---
-# test
-- name: test
+- name: Deploy Virtual Machine
   hosts: edge-devices
   tasks:
-    - name: Add your tasks here
-      debug:
-        msg: "Hello World"
+    - name: Create VM
+      vm_instance:
+        name: new-vm
+        image: ubuntu-20.04
+        memory: 2048
+        vcpus: 2
+        state: present
