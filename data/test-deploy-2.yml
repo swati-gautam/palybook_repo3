@@ -1,0 +1,8 @@
+---
+# test
+- name: test-deploy-2.yml
+  hosts: edge-devices
+  tasks:
+    - name: Add your tasks here
+      debug:
+        msg: "Hello World"
