@@ -1,41 +1,8 @@
 ---
-- name: Deploy MongoDB container on a VM
-  hosts: mongodb_vm
-  become: yes
-  vars:
-    docker_packages:
-      - docker.io
-    mongodb_container_name: "mongodb"
-    mongodb_port: 27017
-    mongodb_root_username: "admin"
-    mongodb_root_password: "secretpassword"
-
+# deploy_mongodb_container
+- name: deploy_mongodb_container.yml
+  hosts: edge-devices
   tasks:
-    - name: Install required packages
-      ansible.builtin.apt:
-        name: "{{ docker_packages }}"
-        state: present
-        update_cache: yes
-
-    - name: Ensure Docker service is running
-      ansible.builtin.service:
-        name: docker
-        state: started
-        enabled: true
-
-    - name: Pull MongoDB image
-      ansible.builtin.docker_image:
-        name: mongo
-        source: pull
-
-    - name: Run MongoDB container
-      ansible.builtin.docker_container:
-        name: "{{ mongodb_container_name }}"
-        image: mongo
-        state: started
-        restart_policy: always
-        ports:
-          - "{{ mongodb_port }}:27017"
-        env:
-          MONGO_INITDB_ROOT_USERNAME: "{{ mongodb_root_username }}"
-          MONGO_INITDB_ROOT_PASSWORD: "{{ mongodb_root_password }}"
+    - name: Add your tasks here
+      debug:
+        msg: "Hello World"
