@@ -1,5 +1,5 @@
 ---
-# test
+# app
 - name: app.yml
   hosts: edge-devices
   tasks:
