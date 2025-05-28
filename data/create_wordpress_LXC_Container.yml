@@ -1,0 +1,8 @@
+---
+# create_wordpress_LXC_Container.yml
+- name: create_wordpress_LXC_Container.yml
+  hosts: edge-devices
+  tasks:
+    - name: Add your tasks here
+      debug:
+        msg: "Hello World"
