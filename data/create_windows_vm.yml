@@ -1,8 +1,59 @@
 ---
-# create_windows_vm.yml
-- name: create_windows_vm.yml
-  hosts: edge-devices
+- name: Create Windows VM on Proxmox
+  hosts: localhost
+  gather_facts: no
+  vars:
+    # Proxmox API details
+    api_host: "https://proxmox-server:8006"
+    api_user: "root@pam"
+    api_password: "your_password_or_token"
+    
+    # VM configuration
+    vm_name: "WindowsVM"
+    vm_id: 100
+    vm_memory: 4096  # 4 GB of RAM
+    vm_cpu: 2
+    vm_disk_size: 32  # 32 GB of disk
+    iso_file: "local:iso/windows-server.iso"  # Path to Windows ISO file on Proxmox storage
+    vm_net: "virtio"  # Network device (virtio or e1000)
+    vm_ip: "192.168.100.100"
+    vm_gateway: "192.168.100.1"
+    vm_subnet: "255.255.255.0"
+
   tasks:
-    - name: Add your tasks here
-      debug:
-        msg: "Hello World"
+    - name: Create Windows VM
+      community.proxmox.proxmox:
+        api_host: "{{ api_host }}"
+        api_user: "{{ api_user }}"
+        api_password: "{{ api_password }}"
+        vmid: "{{ vm_id }}"
+        name: "{{ vm_name }}"
+        cores: "{{ vm_cpu }}"
+        memory: "{{ vm_memory }}"
+        netif:
+          - model: "{{ vm_net }}"
+            bridge: vmbr0  # Assuming vmbr0 is the default network bridge
+        ide2: "{{ iso_file }}"  # Attach ISO for installation
+        disk:
+          - size: "{{ vm_disk_size }}"
+            storage: local
+            type: scsi
+            format: qcow2
+        ostype: win10  # Or win2016, win2019 for different versions
+        onboot: yes
+        boot: cdrom
+        searchdomain: example.local  # Your DNS search domain
+        nameserver: 8.8.8.8  # DNS server
+        ip: "{{ vm_ip }}"
+        netmask: "{{ vm_subnet }}"
+        gateway: "{{ vm_gateway }}"
+        full_clone: no
+        state: present
+
+    - name: Start the Windows VM
+      community.proxmox.proxmox:
+        api_host: "{{ api_host }}"
+        api_user: "{{ api_user }}"
+        api_password: "{{ api_password }}"
+        vmid: "{{ vm_id }}"
+        state: started
