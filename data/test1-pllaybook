@@ -1,0 +1,8 @@
+---
+# dfjhdjfhdjhfj
+- name: test1-pllaybook
+  hosts: edge-devices
+  tasks:
+    - name: Add your tasks here
+      debug:
+        msg: "Hello World"
