@@ -1,7 +1,7 @@
 ---
-# test
+# yml file to test
 - name: test-app.yml
-  hosts: edge-devices-2
+  hosts: edge-devices
   tasks:
     - name: Add your tasks here
       debug:
