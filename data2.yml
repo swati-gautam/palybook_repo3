@@ -1,0 +1,8 @@
+---
+- name: Deploy Virtual Machine
+  hosts: edge-devices
+  tasks:
+    - name: Create VM
+      vm_instance:
+        name: new-vm
+        image: ubuntu-20.04
